@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html [<!ENTITY copy "&#169;">]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+
+        <!-- Bootstrap CSS -->    
+
+
+
+        <title>L'ultima Cena Pizzeria!</title>
+
+        <h:outputStylesheet name="css/styles.css"/>    
+        <h:outputStylesheet name="css/bootstrap.css"/>   
+
+
+    </h:head>
+
+    <h:body>
+
+        <!-- HEADER -->
+
+        <header class="header-section container-fluid">
+            <nav class="navbar navbar-expand navbar-dark bg-dark">
+                <a class="navbar-brand" href="/">
+
+                    <h:graphicImage alt="" name="images/image4.png" title="" height="50px" width="50px"/>
+
+
+                    <!--img src="images/image4.png" width="50" height="50" class="d-inline-block align-top" alt=""-->
+
+
+                    L'ultima Cena
+
+
+                </a>
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <ul class="navbar-nav">
+
+                    <!-- LINKS -->
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Build Your Pizza!</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/orders.html">Orders</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/statistics.html">Statistics</a>
+                    </li>
+
+
+
+
+                </ul>
+            </nav>
+        </header>
+
+        <!-- FORM PART -->
+
+        <div class="container">
+
+            <!-- Notification Area -->
+
+            <div id="order-alert" class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Great!</h4>
+                <p>Your order was accepted successfully</p>
+            </div>
+
+            <div class="jumbotron">
+                <h2 class="text-center">Build your own pizza!</h2>
+                
+                <p:growl />
+                
+                
+                <h:form>
+
+
+                    <!-- CLIENT DATA -->
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Name: </label>
+                        <div class="col-sm-10">
+
+                            <h:inputText value="#{indexMB.name}" required="true" requiredMessage="Set name."/>                        
+                            <!-- input required name="name" type="text" class="form-control" placeholder="Name" -->
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Address: </label>
+                        <div class="col-sm-10">
+
+
+                            <h:inputText value="#{indexMB.address}" required="true" requiredMessage="Set address."/>
+                            <!-- input required name="address" type="text" class="form-control" placeholder="Address" -->
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Phone #: </label>
+                        <div class="col-sm-10">
+
+                            <h:inputText value="#{indexMB.phone}" required="true" requiredMessage="Set phone."/>
+                            <!-- input required name="phone" type="text" class="form-control" placeholder="Phone" -->
+
+
+                        </div>
+                    </div>
+
+                    <!--hr-->
+
+                    <!-- SIZE AND INGREDIENTS -->
+
+                    <table class="table bg-white table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="w-50">Choose a size</th>
+                                <th class="w-50">Choose your ingredients</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p:selectOneListbox value="#{indexMB.selectedSize}" required="true" requiredMessage="Set size.">
+                                        <f:selectItem itemLabel="Small - $5" itemValue="Small - $5" />
+                                        <f:selectItem itemLabel="Medium - $8" itemValue="Medium - $8" />
+                                        <f:selectItem itemLabel="Large - $11" itemValue="Large - $11" />
+                                    </p:selectOneListbox>
+                                </td>
+                                <td>
+
+                                    <p:selectManyCheckbox value="#{indexMB.selectedIngredients}" layout="grid" columns="1" required="true" requiredMessage="Set ingredients.">
+                                        <f:selectItem itemLabel="Extra cheese - $1" itemValue="Extra cheese - $1" />
+                                        <f:selectItem itemLabel="Anchovies - $2" itemValue="Anchovies - $2" />
+                                        <f:selectItem itemLabel="Pineapple - $1" itemValue="Pineapple - $1" />
+                                        <f:selectItem itemLabel="Onions - $1" itemValue="Onions - $1" />
+                                        <f:selectItem itemLabel="Caviar - $5" itemValue="Caviar - $5" />
+                                        <f:selectItem itemLabel="Kobe Beef - $10" itemValue="Kobe Beef - $10" />
+                                    </p:selectManyCheckbox>                   
+
+
+
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- ORDER BUTTON -->
+
+                    <div class="text-center">
+
+                        
+                        
+                        <h:commandButton  value="Order" action="#{indexMB.order}"/> 
+                        <!--button type="submit" class="btn btn-warning btn-lg">Order</button-->
+                    </div>
+
+                </h:form>
+            </div>
+        </div>
+
+
+
+        
+    </h:body>
+
+</html>
